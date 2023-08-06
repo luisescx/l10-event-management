@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Event extends Model
+class Attendee extends Model
 {
     use HasFactory;
 
@@ -16,8 +15,8 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function attendees(): HasMany
+    public function event(): BelongsTo
     {
-        return $this->hasMany(Attendee::class);
+        return $this->belongsTo(Event::class);
     }
 }
